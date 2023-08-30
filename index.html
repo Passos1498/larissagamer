@@ -8,18 +8,20 @@
         body {
             font-family: Arial, sans-serif;
             transition: background-color 0.5s; /* Para suavizar a transição de cores */
+            overflow: hidden; /* Evita rolagem caso a imagem ultrapasse o tamanho da viewport */
         }
-        img {
-            display: block;
-            margin: 50px auto;
+        img#lariImage {
+            position: absolute;
+            width: 300px; /* Ajuste conforme o tamanho desejado */
         }
     </style>
 </head>
 <body>
-    <img src="lari.png" alt="Lari">
+    <img id="lariImage" src="lari.png" alt="Lari">
 
     <script>
         let isYellow = false;
+        let lariImage = document.getElementById('lariImage');
 
         function toggleBackgroundColor() {
             if (isYellow) {
@@ -31,8 +33,17 @@
             isYellow = !isYellow;
         }
 
+        function moveImageRandomly() {
+            let xPosition = Math.random() * (window.innerWidth - lariImage.width);
+            let yPosition = Math.random() * (window.innerHeight - lariImage.height);
+
+            lariImage.style.left = xPosition + 'px';
+            lariImage.style.top = yPosition + 'px';
+        }
+
         // Piscar a cada 1 segundo (1000ms)
         setInterval(toggleBackgroundColor, 1000);
+        setInterval(moveImageRandomly, 1000);
     </script>
 </body>
 </html>
