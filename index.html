@@ -1,23 +1,38 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo Lari</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <title>Página Piscando</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s; /* Para suavizar a transição de cores */
+        }
+        img {
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
 </head>
-
 <body>
-    <h1 class="game-over"> Pressione espaço pra pular os obstáculos... </h1>
-    <div class="game">
-        <div id="dino"></div>
-        <div id="cactus"></div>
-    </div>
+    <img src="lari.png" alt="Lari">
 
-    <p class="game-over"> Recriação do jogo Dinossauro, Google Chrome. </p>
+    <script>
+        let isYellow = false;
 
+        function toggleBackgroundColor() {
+            if (isYellow) {
+                document.body.style.backgroundColor = "white";
+            } else {
+                document.body.style.backgroundColor = "yellow";
+            }
+
+            isYellow = !isYellow;
+        }
+
+        // Piscar a cada 1 segundo (1000ms)
+        setInterval(toggleBackgroundColor, 1000);
+    </script>
 </body>
-
 </html>
